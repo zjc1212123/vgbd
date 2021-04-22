@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+</html>
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>
+    <title>河北省蔬菜大数据</title>
+    <meta name="keywords" content="后台模板,后台管理系统,HTML模板">
+    <meta name="description" content="基于Bootstrap后台管理系统的HTML模板">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/fonts.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <style>
+
+        .info-inputs .form-group {
+            margin: 10px auto;
+        }
+
+        .info-inputs input,
+        .info-inputs select {
+            display: inline-block;
+        }
+
+        #distpicker select {
+            display: inline-block;
+            width: 32.5%;
+        }
+
+        .info-inputs .col-lg-1 {
+            padding-left: 5px;
+            padding-right: 5px;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <!--页面主要内容-->
+    <main class="ftdms-layout-content">
+        <div class="container-fluid" style="height: 100%">
+            <form id="params" class="row info-inputs">
+                <!-- 省市县选择 -->
+                <div class="row info-inputs">
+                    <!-- 省市县 -->
+                    <div class="form-group col-lg-5" id="distpicker">
+                        <!-- 省 -->
+                        <select class="form-control" name="province"></select>
+                        <!-- 市 -->
+                        <select class="form-control" name="city"></select>
+                        <!-- 县/区 -->
+                        <select class="form-control" name="county"></select>
+                    </div>
+                    <!-- 村 -->
+                    <div class="form-group col-lg-1">
+                        <input class="form-control" type="text" name="village" placeholder="村">
+                    </div>
+                    <div class="form-group col-lg-1">
+                        <input class="form-control" type="text" name="householder" placeholder="户主">
+                    </div>
+                    <div class="form-group col-lg-1">
+                        <input class="form-control" type="text" name="greenhouseNumber" placeholder="大棚">
+                    </div>
+                    <div class="form-group col-lg-1">
+                        <input class="form-control" type="text" name="carNumber" placeholder="小车">
+                    </div>
+                    <div class="form-group col-lg-1">
+                        <input class="form-control js-datepicker" data-date-format="yyyy-mm-dd" type="text" id="startTime" name="startTime" placeholder="开始时间">
+                    </div>
+                    <div class="form-group col-lg-1">
+                        <input class="form-control js-datepicker" data-date-format="yyyy-mm-dd" type="text" id="endTime" name="endTime" placeholder="截止时间">
+                    </div>
+                    <div class="form-group col-lg-1" style="text-align:right;">
+                        <button class="btn btn-info btn-w-md" type="button" style="width: 90%;" id="query">查询</button>
+                    </div>
+                </div>
+            </form>
+
+
+            <div class="row card-no-mb" style="height: 80%">
+				  <!-- 左侧图片 -->
+				<div class="col-lg-6" style="height:100%; width:50%; margin-right: -15px">
+				    <div class="card" style="height:33%; margin-bottom: 10px">
+				        <div class="card-body" style="height: 100%">
+				            <div id="chart1"></div>
+				        </div>
+				    </div>
+				    <div class="card" style="height:33%;margin-bottom: 10px">
+				        <div class="card-body" style="height: 100%">
+				            <div id="chart2"></div>
+				        </div>
+				    </div>
+					<div class="card" style="height: 33%">
+					    <div class="card-body" style="height: 100%">
+					        <div id="chart3"></div>
+					    </div>
+					</div>
+				</div>
+                <!-- 右侧图片  -->
+                <div class="col-lg-6" style="height:100%; width:50%">
+                    <div class="card" style="height: 50%; margin-bottom: 10px">
+                        <div class="card-body" style="height: 100%">
+                            <div id="chart4"></div>
+                        </div>
+                    </div>
+                    <div class="card" style="height: 50%;margin-bottom: 10px">
+                        <div class="card-body" style="height: 100%">
+                            <div id="chart5"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <!--End 页面主要内容-->
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <!--echarts-->
+    <script type="text/javascript" src="js/echarts/echarts.js"></script>
+    <script type="text/javascript" src="js/utils/time_compute.js"></script>
+    <script type="text/javascript" src="js/time-chart.js"></script>
+    <script type="text/javascript" src="js/distpicker/distpicker.data.js"></script>
+    <script type="text/javascript" src="js/distpicker/distpicker.js"></script>
+    <!--日期选择插件-->
+    <script src="js/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
+    <script src="js/bootstrap-datepicker/locales/bootstrap-datepicker.zh-CN.min.js"></script>
+    <script type="text/javascript" src="js/main.min.js"></script>
+</body>
+<script>
+    $("#distpicker").distpicker({
+        province: "河北省",
+        autoSelect: false
+    });
+</script>
+</html>

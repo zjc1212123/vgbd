@@ -1,0 +1,183 @@
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>河北省现代农业产业技术体系 蔬菜大数据</title>
+    <link rel="icon" href="favicon.ico" type="image/ico">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/theme.css" rel="stylesheet">
+    <link href="css/fonts.css" rel="stylesheet">
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <script src="js/jquery.cookie.js"></script>
+    <script src="js/framework.js"></script>
+    <style>
+        .title {
+            width: 100%;
+            text-align: center;
+            position: absolute;
+            left: 0;
+            font-size: 26px;
+            color: white;
+            line-height: 60px;
+            margin: 0;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body class="theme-blue-gradient pace-done" style="overflow: hidden; ">
+    <div class="pace  pace-inactive">
+        <div class="pace-progress" style="width: 100%;" data-progress-text="100%" data-progress="99">
+            <div class="pace-progress-inner"></div>
+        </div>
+        <div class="pace-activity"></div>
+    </div>
+    <div id="ajax-loader"
+         style="background: rgb(255, 255, 255); left: -50%; top: -50%; width: 200%; height: 200%; overflow: hidden; display: none; position: fixed; z-index: 10000; cursor: progress;">
+        <img style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; margin: auto;" src="images/loader.gif"/>
+    </div>
+    <div id="theme-wrapper">
+        <header class="navbar" id="header-navbar" style="height: 60px">
+            <div class="container" style="padding-right: 0px;">
+                <div class="clearfix">
+                    <div class="nav-no-collapse navbar-left pull-left hidden-sm hidden-xs">
+                        <ul class="nav navbar-nav pull-left">
+                            <li>
+                                <a id="make-small-nav">
+                                    <div class="ftdms-aside-toggler">
+                                        <span class="ftdms-toggler-bar"></span>
+                                        <span class="ftdms-toggler-bar"></span>
+                                        <span class="ftdms-toggler-bar"></span>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <p class="title">河北省现代农业产业技术体系
+                        <span style="font-size: 34px;font-weight: bolder;font-family: '楷体',serif">蔬菜大数据</span>
+                    </p>
+                    <div class="nav-no-collapse pull-right" id="header-nav">
+                        <ul class="nav navbar-nav pull-right">
+                            <li class="dropdown profile-dropdown">
+                                <a class="dropdown" href="#" data-toggle="dropdown">
+                                    <!-- <img class="img-qrcode img-qrcode-46" src="images/ftsucai.png" alt="用户头像" /> -->
+                                    <span class="hidden-xs">当前用户：张智波&nbsp;&nbsp;&nbsp;&nbsp;角色：政府</span></a>
+                                <ul class="dropdown-menu pull-right">
+                                    <li>
+                                        <a class="submenuitem" href="pages_profile.html" data-id="rofile"
+                                           data-index="100"><i class="ft ftsucai-58"></i>个人信息</a>
+                                    </li>
+                                    <li>
+                                        <a class="submenuitem" href="pages_edit_pwd.html" data-id="linkpwd"
+                                           data-index="101"><i class="ft ftsucai-edit-2"></i>修改密码</a>
+                                    </li>
+                                    <li>
+                                        <a href="pages_login.html"><i class="ft ftsucai-exit2"></i>安全退出</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <div class="container" id="page-wrapper">
+            <div class="row">
+                <div id="nav-col">
+                    <section class="col-left-nano" id="col-left">
+                        <div class="col-left-nano-content" id="col-left-inner">
+                            <div class="collapse navbar-collapse navbar-ex1-collapse" id="sidebar-nav">
+                                <ul class="nav nav-pills nav-stacked">
+                                    <li>
+                                        <a class="dropdown-toggle" href="index.html" data-id="a1">
+                                            <i class="ft ftsucai-82"></i>
+                                            <span onClick="location='index.html'">首页</span>
+                                            <i class="ft ftsucai-139 drop-icon"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-toggle" href="#" data-id="a2">
+                                            <i class="ft ftsucai-edit-2"></i>
+                                            <span onClick="location='zonghe.html'">综合分析</span>
+                                            <i class="ft ftsucai-139 drop-icon"></i>
+                                        </a>
+
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-toggle" href="#" data-id="a3">
+                                            <i class="ft ftsucai-edit-2"></i>
+                                            <span>对比分析</span>
+                                            <i class="ft ftsucai-139 drop-icon"></i>
+                                        </a>
+                                        <ul class="submenu">
+                                            <li>
+                                                <a class="submenuitem" href="home.html" data-id="link21"
+                                                   data-index="21" onClick="location='area.html'">按地区</a>
+                                            </li>
+                                            <li>
+                                                <a class="submenuitem" href="home.html" data-id="link22"
+                                                   data-index="22" onClick="location='time.html'">按时间</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+                <div id="content-wrapper">
+                    <div class="content-tabs" style="height:44px;border-bottom:2px solid #f0f0f0;">
+                        <button class="roll-nav roll-left tabLeft">
+                            <i class="ft ftsucai-backward2"></i>
+                        </button>
+                        <nav class="page-tabs menuTabs">
+                            <div class="page-tabs-content" style="margin-left: 0px;">
+                                <a class="menuTab active" href="javascript:;" data-id="home.html">蔬菜实时大数据</a></div>
+                        </nav>
+                        <button class="roll-nav roll-right tabRight">
+                            <i class="ft ftsucai-forward3"></i>
+                        </button>
+                        <div class="btn-group roll-nav roll-right">
+                            <button class="dropdown tabClose" data-toggle="dropdown">页签操作
+                                <i class="ft caret" style="padding-top: 3px;"></i>
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-right">
+                                <li>
+                                    <a class="tabReload" href="javascript:void();"><i class="ft ftsucai-spinner3"></i>刷新当前页面</a>
+                                </li>
+                                <li>
+                                    <a class="tabCloseCurrent" href="javascript:void();"><i class="ft ftsucai-close-3"></i>关闭当前页面</a></li>
+                                <li>
+                                    <a class="tabCloseAll" href="javascript:void();"><i class="ft ftsucai-77"></i>关闭全部页面</a>
+                                </li>
+                                <li>
+                                    <a class="tabCloseOther" href="javascript:void();"><i class="ft ftsucai-120"></i>除此之外全关</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="content-iframe" style="background-color: #f9f9f9;">
+                        <div class="mainContent" id="content-main" style="margin: 0px; padding: 0px;">
+                            <iframe name="main_iframe" width="100%" height="100%" class="main_iframe" id="default"
+                                    src="zongheusing.html" frameborder="0" data-id="home.html"></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="loadingPage" style="display: none;">
+        <div class="loading-shade"></div>
+        <div class="loading-content" onClick="$.loading(false)">数据加载中，请稍后…</div>
+    </div>
+<!--    <script type="text/javascript" src="js/echarts/echarts.js"></script>-->
+<!--    <script type="text/javascript" src="js/index-chart.js"></script>-->
+    <script src="js/index.js"></script>
+    <script src="js/indextab.js"></script>
+    <script src="js/pace.min.js"></script>
+</body>
+<script>
+
+
+</script>
+</html>

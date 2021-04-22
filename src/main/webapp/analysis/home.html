@@ -1,0 +1,269 @@
+﻿<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>
+    <title>河北省蔬菜大数据</title>
+    <meta name="keywords" content="后台模板,后台管理系统,HTML模板">
+    <meta name="description" content="基于Bootstrap后台管理系统的HTML模板">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/fonts.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <style>
+
+        .info-inputs .form-group {
+            margin: 10px auto;
+        }
+
+        .info-inputs input,
+        .info-inputs select {
+            display: inline-block;
+        }
+
+        #distpicker select {
+            display: inline-block;
+            width: 32.5%;
+        }
+
+        .info-inputs .col-lg-1 {
+            padding-left: 5px;
+            padding-right: 5px;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <!--页面主要内容-->
+    <main class="ftdms-layout-content">
+        <div class="container-fluid" style="height: 100%">
+            <!-- 查询条件 -->
+            <form class="row info-inputs" id="params">
+                <!-- 省市县 -->
+                <div class="form-group col-lg-5" id="distpicker">
+                    <!-- 省 -->
+                    <select class="form-control" name="province"></select>
+                    <!-- 市 -->
+                    <select class="form-control" name="city"></select>
+                    <!-- 县/区 -->
+                    <select class="form-control" name="county"></select>
+                </div>
+                <!-- 村 -->
+                <div class="form-group col-lg-1">
+                    <input class="form-control" type="text" name="village" placeholder="村">
+                </div>
+                <div class="form-group col-lg-1">
+                    <input class="form-control" type="text" name="householder" placeholder="户主">
+                </div>
+                <div class="form-group col-lg-1">
+                    <input class="form-control" type="text" name="greenhouseNumber" placeholder="大棚">
+                </div>
+                <div class="form-group col-lg-1">
+                    <input class="form-control" type="text" name="carNumber" placeholder="小车">
+                </div>
+                <div class="form-group col-lg-1">
+                    <input class="form-control js-datepicker" data-date-format="yyyy-mm-dd" type="text" id="startTime" name="startTime"
+                           placeholder="开始时间">
+                </div>
+                <div class="form-group col-lg-1">
+                    <input class="form-control js-datepicker" data-date-format="yyyy-mm-dd" type="text" id="endTime" name="endTime"
+                           placeholder="截止时间">
+                </div>
+                <div class="form-group col-lg-1" style="text-align:right;">
+                    <button class="btn btn-info btn-w-md" type="button" style="width: 90%;" id="query">查询</button>
+                </div>
+            </form>
+            <div class="row">
+                <div class="col-sm-6 col-lg-3">
+                    <div class="card bg-primary">
+                        <div class="card-body clearfix">
+                            <div class="pull-left">
+                                <p class="h6 text-white m-t-0">总产量(kg)</p>
+                                <p class="h3 text-white m-b-0" id="allYield">0</p>
+                            </div>
+                            <div class="pull-right"><span class="img-avatar img-avatar-48 bg-translucent"><i
+                                    class="ftsucai-56 fa-1-5x"></i></span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-6 col-lg-3">
+                    <div class="card bg-danger">
+                        <div class="card-body clearfix">
+                            <div class="pull-left">
+                                <p class="h6 text-white m-t-0">总品种(种)</p>
+                                <p class="h3 text-white m-b-0" id="allVariety">0</p>
+                            </div>
+                            <div class="pull-right"><span class="img-avatar img-avatar-48 bg-translucent"><i
+                                    class="ftsucai-310 fa-1-5x"></i></span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-6 col-lg-3">
+                    <div class="card bg-success">
+                        <div class="card-body clearfix">
+                            <div class="pull-left">
+                                <p class="h6 text-white m-t-0">总面积(平方)</p>
+                                <p class="h3 text-white m-b-0" id="allArea">0</p>
+                            </div>
+                            <div class="pull-right"><span class="img-avatar img-avatar-48 bg-translucent"><i
+                                    class="ftsucai-55 fa-1-5x"></i></span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-6 col-lg-3">
+                    <div class="card bg-purple">
+                        <div class="card-body clearfix">
+                            <div class="pull-left">
+                                <p class="h6 text-white m-t-0">设施数量</p>
+                                <p class="h3 text-white m-b-0" id="allNumber">0</p>
+                            </div>
+                            <div class="pull-right"><span class="img-avatar img-avatar-48 bg-translucent"><i
+                                    class="ftsucai-310 fa-1-5x"></i></span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row card-no-mb" style="height: 80%">
+                <!-- 左侧地图 -->
+                <div class="col-lg-6" style="height: 90%">
+                    <div class="card" style="height: 100%">
+                        <div class="card-header">
+                        </div>
+                        <div id="map"></div>
+                    </div>
+                </div>
+                <!-- 右侧图片  -->
+                <div class="col-lg-6" style="height: 90%">
+                    <div class="card" style="height: 49%;margin-bottom: 10px">
+                        <div class="card-body" style="height: 100%">
+                            <div id="chart1"></div>
+                        </div>
+                    </div>
+                    <div class="card" style="height: 49%">
+                        <div class="card-body" style="height: 100%">
+                            <div id="chart2"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <!--End 页面主要内容-->
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <!--echarts-->
+    <script type="text/javascript" src="js/echarts/echarts.js"></script>
+    <script type="text/javascript" src="js/index-chart.js"></script>
+    <script type="text/javascript" src="js/distpicker/distpicker.data.js"></script>
+    <script type="text/javascript" src="js/distpicker/distpicker.js"></script>
+    <!--日期选择插件-->
+    <script src="js/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
+    <script src="js/bootstrap-datepicker/locales/bootstrap-datepicker.zh-CN.min.js"></script>
+    <script type="text/javascript" src="js/main.min.js"></script>
+</body>
+<script>
+    /**
+     * DOM树
+     * $("#distpicker")
+     * document.getElementById("distpicker");
+     *
+     * $(".card")
+     * document.getElementsByClassName("card");
+     * */
+
+    var params;
+    $("#distpicker").distpicker({  // 默认就是河北省
+        province: "河北省",
+        autoSelect: false
+    });
+    //实时更新
+    var realtime = setInterval(function () {
+        // 查询相关数据
+        params = {};
+        doPost(params);
+    }, 1000);
+
+    //点击查询按钮
+    $("#query").on('click', function () {
+        //停止计时器
+        clearInterval(realtime);
+        //获取查询条件
+        params = $("#params").serializeJson();
+        console.log(params);
+        doPost(params);
+    })
+
+    //发请求
+    function doPost(params) {
+        $.ajax({
+            url: "../analysis/index", // 后端接口
+            data: {
+                params: JSON.stringify(params)
+            },
+            type: "post",
+            success: function (res) {
+                console.log(res)
+                /**
+                 * <span id="aaa">span标签</span>
+                 * document.getElementById("aaa").innerHTML = "span标签";
+                 * $("#aaa").text("span标签");
+                 */
+                //设定总产量
+                $("#allYield").text(res.allYield);
+                //设定总品种
+                $("#allVariety").text(res.allVariety);
+                //设定总面积
+                $("#allArea").text(res.allArea);
+                //设定设施数量
+                $("#allNumber").text(res.allNumber);
+                //右侧图表1的值
+                var allYieldByHour = res.allYieldByHour;
+                var XData1 = [];
+                var YData1 = [];
+                for (var i = 0; i < allYieldByHour.length; i++) {
+                    XData1.push(allYieldByHour[i].name);
+                    YData1.push(allYieldByHour[i].value);
+                }
+                //重新渲染图表
+                chart1Option.xAxis.data = XData1;
+                chart1Option.series[0].data = YData1;
+                chart1.setOption(chart1Option);
+
+                //右侧图表2的值
+                var allYieldByVariety = res.allYieldByVariety;
+                var XData2 = [];
+                var YData2 = [];
+                for (var i = 0; i < allYieldByVariety.length; i++) {
+                    var name = allYieldByVariety[i].name;
+                    var x = "";
+                    if (name === "01") {
+                        x = "白菜"
+                    } else if (name === "02") {
+                        x = "西红柿";
+                    } else if (name === "03") {
+                        x = "黄瓜";
+                    } else if (name === "04") {
+                        x = "土豆";
+                    }
+                    XData2.push(x);
+                    YData2.push(allYieldByVariety[i].value);
+                }
+                //重新渲染图表
+                chart2Option.yAxis.data = XData2;
+                chart2Option.series[0].data = YData2;
+                chart2.setOption(chart2Option);
+                console.log(res)
+            },
+            error: function (e) {
+                console.log(e.responseText)
+            }
+        })
+    }
+
+
+</script>
+</html>
